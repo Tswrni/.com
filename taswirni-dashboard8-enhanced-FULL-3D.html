@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>لوحة تحكم تطبيق تصورني - متطورة</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Cairo', sans-serif !important;
+      color: #ffffff;
+    }
+
+    body {
+      background-color: #11131e;
+      line-height: 1.8;
+      scroll-behavior: smooth;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    header {
+      text-align: center;
+      padding: 60px 20px;
+      background: url('https://via.placeholder.com/1400x600/11131e/17b09a?text=تطبيق+تصورني') no-repeat center;
+      background-size: cover;
+      border-radius: 20px;
+      margin-bottom: 50px;
+      position: relative;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(17, 19, 30, 0.9);
+      border-radius: 20px;
+    }
+
+    header * {
+      position: relative; z-index: 2;
+    }
+
+    .logo {
+      width: 200px;
+      margin-bottom: 25px;
+      border-radius: 10px;
+      border: 2px solid #17b09a;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      color: #17b09a;
+      margin: 20px 0;
+      font-weight: 700;
+    }
+
+    header p {
+      font-size: 1.4rem;
+      color: #ffffff;
+    }
+
+    .section {
+      background: #002727;
+      border-radius: 20px;
+      padding: 40px;
+      margin: 50px 0;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      overflow: hidden;
+    }
+
+    .section-title {
+      text-align: center;
+      color: #17b09a;
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin-bottom: 30px;
+    }
+
+    .chart-container {
+      height: 500px;
+      margin: 30px 0;
+    }
+
+    canvas {
+      max-height: 500px !important;
+    }
+
+    .analysis {
+      margin-top: 35px;
+      padding: 30px;
+      background: rgba(23, 176, 154, 0.15);
+      border-right: 6px solid #17b09a;
+      border-radius: 12px;
+      font-size: 1.2rem;
+      line-height: 1.9;
+    }
+
+    footer {
+      text-align: center;
+      padding: 50px 0;
+      margin-top: 80px;
+      border-top: 2px solid #00967e;
+      color: #cccccc;
+      font-size: 1.1rem;
+    }
+
+    footer a {
+      color: #17b09a;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #17b09a;
+      color: white;
+      padding: 12px 25px;
+      margin: 10px 5px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      border: none;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #00967e;
+      transform: translateY(-2px);
+    }
+  </style>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- الشريحة 1: العنوان -->
+    <header>
+      
+      <h1>تطبيق تصورني</h1>
+      <p>منصة رقمية تُواصِل بين العملاء والمصورين</p>
+      <p><strong>فرصة استثمارية استثنائية | استثمر 40 مليون – احصل على 51.2 مليون خلال سنتين</strong></p>
+      <p>متوافق مع رؤية 2030 | أكتوبر 2025</p>
+    
+<div class="analysis" style="margin-top: 30px;">
+  <strong>تحليل استراتيجي:</strong><br>
+  تصميم النظام يعكس فهمًا عميقًا لاحتياجات السوق المحلي، من خلال الجمع بين العناصر التقنية (تطبيق + ويب + محفظة) وبين التجربة الفعلية للعملاء (أول عملية حجز ناجحة).<br><br>
+  إزالة الشعار العلوي يساهم في توجيه الانتباه مباشرة إلى العرض الاستثماري، ما يعزز من قوة الرسالة البصرية للمستثمر. المنصة جاهزة للنمو السريع محليًا وإقليميًا، وتتمتع بتكامل تقني ومالي مثبت، مع رؤية متوافقة مع أهداف التحول الرقمي في رؤية 2030.
+</div>
+
+</header>
+
+    <!-- الشريحة 2: الرؤية والرسالة -->
+    <div class="section">
+      <div class="section-title">الرؤية والرسالة</div>
+      <p style="text-align: right; font-size: 1.3rem; line-height: 2;">
+        <strong>من نحن؟</strong><br>
+        "تصورني" هي منصة رقمية سعودية مبتكرة تُسهل على العملاء طلب جلسات تصوير احترافية، وتُمكّن المصورين من عرض أعمالهم وإدارة أعمالهم بسلاسة.<br><br>
+        <strong>الرؤية:</strong> أن نكون المنصة الرائدة في الشرق الأوسط لربط الإبداع بالطلب في مجال التصوير الاحترافي.<br><br>
+        <strong>المهمة:</strong> تمكين المصوّرين من بناء علامتهم، وتمكين العملاء من الوصول إليهم بلمسة واحدة، عبر تجربة رقمية آمنة، شاملة، ومحسوسة.
+      </p>
+      <div class="analysis">
+        <strong>التحليل:</strong> تُظهر الرؤية والرسالة تركيزًا استراتيجيًا على التميز في السوق الرقمي للإبداع، مع دعم التوطين والتحول الرقمي وفق رؤية 2030.
+      </div>
+    </div>
+
+    <!-- الشريحة 3: الهيكل التنظيمي - Pyramid Chart -->
+    <div class="section">
+      <div class="section-title">الهيكل التنظيمي - مخطط هرمي</div>
+      <div class="chart-container">
+        <div id="pyramidChart"></div>
+      </div>
+      <div class="analysis">
+        <strong>التحليل:</strong> الهيكل الهرمي يوضح توزيع المهام: الإدارة من السعودية، التنفيذ من باكستان ومصر، مما يضمن جودة عالية وتكلفة منخفضة.
+      </div>
+    </div>
+
+    <!-- الشريحة 4: المرحلة الحالية -->
+    <div class="section">
+      <div class="section-title">المرحلة الحالية: دخلنا مرحلة Seed</div>
+      <p style="text-align: right; font-size: 1.3rem; line-height: 2;">
+        ✅ إطلاق MVP متكامل تقنيًا<br>
+        • تطبيق + ويب + دفع + محفظة + خرائط + سيرفر محلي<br>
+        ✅ قاعدة مستخدمين حقيقية<br>
+        • +500 مستخدم مسجل (243 عميل، 262 مصور) بدون تسويق<br>
+        ✅ أول عملية دفع ناجحة<br>
+        • تم تنفيذ أول حجز مدفوع عبر النظام في ديسمبر 2025<br>
+        • الدفع تم عبر Amazon Pay باستخدام بطاقة محلية مرتبطة بنظام مدى (MADA)<br>
+        • المعاملة نجحت وتم تسجيلها في النظام والمحفظة
+      </p>
+      <div class="analysis">
+        <strong>التحليل:</strong> هذه العملية تُعد إثباتًا عمليًا على التكامل المالي الناجح، وتدخل بنا رسميًا إلى مرحلة Seed، حيث نبدأ الآن في اختبار السوق وتحقيق Product-Market Fit.
+      </div>
+    </div>
+
+    <!-- الشريحة 5: ميزات النظام (MVP متكامل) -->
+    <div class="section">
+      <div class="section-title">ميزات النظام (MVP متكامل)</div>
+      <p style="text-align: right; font-size: 1.3rem; line-height: 2;">
+        ✅ منصة متكاملة تقنيًا<br>
+        • تطبيق جوال (أندرويد / iOS) + موقع ويب ثنائي اللغة (عربي / إنجليزي)<br>
+        • تسجيل دخول للعملاء والمصورين (عبر التطبيق والويب)<br>
+        • لوحة تحكم مخصصة لكل نوع مستخدم<br>
+        • نظام إرسال واستقبال الطلبات<br>
+        • تحديد موقع الطلب بدقة عبر خرائط جوجل (Google Maps)<br>
+        • إشعارات فورية (طلب جديد، تحديث الحالة)<br>
+        • نظام تقييم وتعليقات<br>
+        • محفظة رقمية داخل التطبيق والموقع (لحفظ الأموال، استلام المدفوعات، وسحب الأرباح)<br>
+        • دعم كامل للغتين: العربية والإنجليزية<br>
+        • تكامل مع أنظمة دفع متعددة:<br>
+          - تابي – للدفع بالتقسيط دون فوائد<br>
+          - يور بي (Uper Pay) – حل دفع محلي آمن<br>
+          - نيو ليب (Neoleap) – منصة دفع رقمية متطورة<br>
+          - Amazon Pay – دفع عالمي عبر الحسابات النشطة<br>
+          - MADA – عبر البطاقات المحلية<br>
+          - STC Pay – وسيلة دفع محلية سريعة وآمنة<br>
+        • أكثر من 100 صفحة/شاشة مصممة بعناية<br>
+        • البنية التحتية مُستضافة على Google Cloud Platform (GCP)<br>
+        • السيرفر في منطقة الدمام، المملكة العربية السعودية
+      </p>
+      <div class="analysis">
+        <strong>التحليل:</strong> المنصة متكاملة تقنيًا، وتتفوق في دعم وسائل الدفع المحلية والدولية، مما يعزز تجربة المستخدم ويقلل معدلات الفشل في الدفع.
+      </div>
+    </div>
+
+    <!-- الشريحة 6: الإنجازات حتى الآن -->
+    <div class="section">
+      <div class="section-title">الإنجازات حتى الآن</div>
+      <table style="width:100%; border-collapse: collapse; margin:20px 0;">
+        <tr style="background:#00967e;">
+          <th style="border:1px solid #17b09a; padding:12px; text-align:center;">المؤشر</th>
+          <th style="border:1px solid #17b09a; padding:12px; text-align:center;">العدد</th>
+        </tr>
+        <tr><td style="border:1px solid #17b09a; padding:12px;">العملاء المسجلين</td><td style="border:1px solid #17b09a; padding:12px;">243</td></tr>
+        <tr><td style="border:1px solid #17b09a; padding:12px;">المصورين المسجلين</td><td style="border:1px solid #17b09a; padding:12px;">262</td></tr>
+        <tr><td style="border:1px solid #17b09a; padding:12px;">إجمالي المستخدمين</td><td style="border:1px solid #17b09a; padding:12px;">+500</td></tr>
+        <tr><td style="border:1px solid #17b09a; padding:12px;">الطلبات الفعلية</td><td style="border:1px solid #17b09a; padding:12px;">1 (ناجح ومدفوع)</td></tr>
+        <tr><td style="border:1px solid #17b09a; padding:12px;">أول عملية دفع</td><td style="border:1px solid #17b09a; padding:12px;">Amazon Pay + بطاقة مدى (MADA)</td></tr>
+        <tr><td style="border:1px solid #17b09a; padding:12px;">الحملات الإعلانية</td><td style="border:1px solid #17b09a; padding:12px;">غير مُنفَّذة بعد</td></tr>
+        <tr><td style="border:1px solid #17b09a; padding:12px;">الشركة المالكة</td><td style="border:1px solid #17b09a; padding:12px;">لحظة للتسويق الإلكتروني – شركة سعودية</td></tr>
+        <tr><td style="border:1px solid #17b09a; padding:12px;">الفريق التقني</td><td style="border:1px solid #17b09a; padding:12px;">10 مطورين – لاهور، باكستان</td></tr>
+      </table>
+      <div class="chart-container">
+        <div id="usersChart"></div>
+      </div>
+      <div class="analysis">
+        <strong>التحليل:</strong> جميع التسجيلات تمت عبر الانتشار العضوي والجهد الشخصي، والنظام جاهز تقنيًا بالكامل، وأول عملية دفع ناجحة تُثبت التكامل المالي والجدوى التجارية.
+      </div>
+    </div>
+
+    <!-- الشريحة 7: التحليل المالي (2025–2030) -->
+    <div class="section">
+      <div class="section-title">التحليل المالي (2025–2030)</div>
+      <div class="chart-container">
+        <div id="financialChart"></div>
+      </div>
+      <div class="analysis">
+        <strong>التحليل:</strong> الاستثمار المطلوب: 40 مليون ريال. الربح الصافي خلال 6 سنوات: 504.65 مليون ريال، بمعدل نمو سنوي مركب (CAGR) 18.1%.
+      </div>
+    </div>
+
+    <!-- الشريحة 8: المؤشرات المالية -->
+    <div class="section">
+      <div class="section-title">المؤشرات المالية (السيناريو الواقعي)</div>
+      <div class="chart-container">
+        <div id="metricsChart"></div>
+      </div>
+      <div class="analysis">
+        <strong>التحليل:</strong> العائد على الاستثمار خلال سنتين: 28%. القيمة السوقية المتوقعة بعد سنتين: 512 مليون ريال. هذا يجعل الفرصة جذابة جدًا للمستثمرين.
+      </div>
+    </div>
+
+    <!-- الشريحة 9: عرض الاستثمار -->
+    <div class="section">
+      <div class="section-title">عرض الاستثمار</div>
+      <div class="chart-container">
+        <div id="investmentChart"></div>
+      </div>
+      <div class="analysis">
+        <strong>التحليل:</strong> العائد على الاستثمار (ROI): 1,261.63% خلال 6 سنوات. متوافق مع رؤية 2030 – التحول الرقمي، التوطين، الاقتصاد السياحي.
+      </div>
+    </div>
+
+    <!-- الشريحة 10: لماذا "تصورني"؟ -->
+    <div class="section">
+      <div class="section-title">لماذا "تصورني"؟</div>
+      <p style="text-align: right; font-size: 1.3rem; line-height: 2;">
+        <strong>المشكلة في السوق:</strong><br>
+        • صعوبة العثور على مصورين موثوقين بسرعة.<br>
+        • غياب منصة مركزية تربط الطرفين بشكل آمن.<br>
+        • عدم وجود نظام دفع موحد أو محفظة رقمية.<br>
+        • ضعف التقييم والضمانات للعميل.<br><br>
+        <strong>الحل:</strong><br>
+        "تصورني" يُقدّم تجربة رقمية متكاملة:<br>
+        • من الطلب إلى الدفع<br>
+        • من تحديد الموقع إلى التقييم<br>
+        • عبر تطبيق + ويب + دفع محلي ودولي<br>
+        • مع بنية تقنية متطورة ومحفظة رقمية<br>
+        • وفريق برمجي محترف تحت إشراف شركة سعودية
+      </p>
+      <div class="analysis">
+        <strong>التحليل:</strong> نحن لا نقدم تطبيقًا، بل نُنشئ سوقًا رقميًا للإبداع، يربط بين العرض (المصورين) والطلب (العملاء)، مع حلول تقنية متكاملة.
+      </div>
+    </div>
+
+    <!-- الشريحة 11: خطة التوسع -->
+    <div class="section">
+      <div class="section-title">خطة التوسع والجدول الزمني</div>
+      <div class="chart-container">
+        <div id="timelineChart"></div>
+      </div>
+      <div class="analysis">
+        <strong>التحليل:</strong> خطة توسع مدروسة، تبدأ محليًا ثم إقليميًا، وتستفيد من أحداث كبرى مثل إكسبو 2030 وكأس العالم 2034، مما يقلل المخاطر ويعظم العائد.
+      </div>
+    </div>
+
+    <!-- الشريحة 12: التوسع العالمي -->
+    <div class="section">
+      <div class="section-title">التوسع العالمي (2031–2040)</div>
+      <table style="width:100%; border-collapse: collapse; margin:20px 0;">
+        <tr style="background:#00967e;">
+          <th style="border:1px solid #17b09a; padding:12px; text-align:center;">السنة</th>
+          <th style="border:1px solid #17b09a; padding:12px; text-align:center;">الدولة</th>
+          <th style="border:1px solid #17b09a; padding:12px; text-align:center;">التكلفة</th>
+          <th style="border:1px solid #17b09a; padding:12px; text-align:center;">الايرادات</th>
+        </tr>
+        <tr><td style="border:1px solid #17b09a; padding:12px;">2031</td><td style="border:1px solid #17b09a; padding:12px;">تركيا</td><td style="border:1px solid #17b09a; padding:12px;">10 مليون</td><td style="border:1px solid #17b09a; padding:12px;">شراكات ثقافية</td></tr>
+        <tr><td style="border:1px solid #17b09a; padding:12px;">2032</td><td style="border:1px solid #17b09a; padding:12px;">إندونيسيا</td><td style="border:1px solid #17b09a; padding:12px;">12 مليون</td><td style="border:1px solid #17b09a; padding:12px;">تصوير السياحة الإسلامية</td></tr>
+        <tr><td style="border:1px solid #17b09a; padding:12px;">2033</td><td style="border:1px solid #17b09a; padding:12px;">الهند</td><td style="border:1px solid #17b09a; padding:12px;">14 مليون</td><td style="border:1px solid #17b09a; padding:12px;">فعاليات دينية وثقافية</td></tr>
+        <tr><td style="border:1px solid #17b09a; padding:12px;">2034</td><td style="border:1px solid #17b09a; padding:12px;">كأس العالم</td><td style="border:1px solid #17b09a; padding:12px;">—</td><td style="border:1px solid #17b09a; padding:12px;">+15–20% طلب</td></tr>
+        <tr><td style="border:1px solid #17b09a; padding:12px;">2035</td><td style="border:1px solid #17b09a; padding:12px;">البرازيل</td><td style="border:1px solid #17b09a; padding:12px;">15 مليون</td><td style="border:1px solid #17b09a; padding:12px;">فعاليات رياضية</td></tr>
+        <tr><td style="border:1px solid #17b09a; padding:12px;">2036</td><td style="border:1px solid #17b09a; padding:12px;">أمريكا</td><td style="border:1px solid #17b09a; padding:12px;">18 مليون</td><td style="border:1px solid #17b09a; padding:12px;">تصوير العرب والسياح</td></tr>
+        <tr><td style="border:1px solid #17b09a; padding:12px;">2037</td><td style="border:1px solid #17b09a; padding:12px;">اليابان</td><td style="border:1px solid #17b09a; padding:12px;">22 مليون</td><td style="border:1px solid #17b09a; padding:12px;">السياحة الثقافية</td></tr>
+        <tr><td style="border:1px solid #17b09a; padding:12px;">2038</td><td style="border:1px solid #17b09a; padding:12px;">أستراليا</td><td style="border:1px solid #17b09a; padding:12px;">25 مليون</td><td style="border:1px solid #17b09a; padding:12px;">الفعاليات الثقافية</td></tr>
+      </table>
+      <div class="analysis">
+        <strong>التحليل:</strong> التوسع العالمي يُحقق تنويعًا جغرافيًا للمخاطر، مع استهداف أسواق سياحية وثقافية كبيرة. القيمة السوقية المتوقعة في 2040: 3 مليار ريال.
+      </div>
+    </div>
+
+    <!-- الشريحة 13: تحليل SWOT -->
+    <div class="section">
+      <div class="section-title">تحليل SWOT</div>
+      <table style="width:100%; border-collapse: collapse; margin:20px 0;">
+        <tr style="background:#00967e;">
+          <th style="border:1px solid #17b09a; padding:12px; text-align:center;">نقاط القوة</th>
+          <th style="border:1px solid #17b09a; padding:12px; text-align:center;">نقاط الضعف</th>
+        </tr>
+        <tr><td style="border:1px solid #17b09a; padding:12px;">MVP متكامل تقنيًا</td><td style="border:1px solid #17b09a; padding:12px;">اعتماد على فريق تقني خارجي</td></tr>
+        <tr><td style="border:1px solid #17b09a; padding:12px;">عمولة 20% (80% للمصور)</td><td style="border:1px solid #17b09a; padding:12px;">عدم وجود علامة تجارية قوية بعد</td></tr>
+        <tr><td style="border:1px solid #17b09a; padding:12px;">تكاليف تشغيل منخفضة</td><td style="border:1px solid #17b09a; padding:12px;">تأخر في التسويق</td></tr>
+        <tr><td style="border:1px solid #17b09a; padding:12px;">دعم متعدد اللغات</td><td style="border:1px solid #17b09a; padding:12px;">اعتماد على شركاء خارجيين</td></tr>
+        <tr style="background:#00967e;">
+          <th style="border:1px solid #17b09a; padding:12px; text-align:center;">الفرص</th>
+          <th style="border:1px solid #17b09a; padding:12px; text-align:center;">التهديدات</th>
+        </tr>
+        <tr><td style="border:1px solid #17b09a; padding:12px;">رؤية 2030، إكسبو 2030، كأس العالم 2034</td><td style="border:1px solid #17b09a; padding:12px;">منافسة من منصات مثل Fiverr وUpwork</td></tr>
+        <tr><td style="border:1px solid #17b09a; padding:12px;">التوسع إلى الخليج</td><td style="border:1px solid #17b09a; padding:12px;">تقلبات اقتصادية</td></tr>
+        <tr><td style="border:1px solid #17b09a; padding:12px;">الذكاء الاصطناعي</td><td style="border:1px solid #17b09a; padding:12px;">ارتفاع رسوم الدفع (تابي، يور بي)</td></tr>
+        <tr><td style="border:1px solid #17b09a; padding:12px;">الشراكات مع السياحة</td><td style="border:1px solid #17b09a; padding:12px;">تغييرات في اللوائح</td></tr>
+      </table>
+      <div class="analysis">
+        <strong>التحليل:</strong> نقاط القوة تفوق نقاط الضعف، والفرص تفوق التهديدات، مما يضع "تصورني" في موقف تنافسي قوي.
+      </div>
+    </div>
+
+    <!-- الشريحة 14: تحليل المخاطر -->
+    <div class="section">
+      <div class="section-title">تحليل المخاطر وخطط الطوارئ</div>
+      <div class="chart-container">
+        <div id="riskChart"></div>
+      </div>
+      <div class="analysis">
+        <strong>التحليل:</strong> خطط الطوارئ تُقلل المخاطر بنسبة 70%. النظام مُدار بشكل جيد من حيث إدارة المخاطر.
+      </div>
+    </div>
+
+    <!-- الشريحة 15: تقييم "تصورني" -->
+    <div class="section">
+      <div class="section-title">تقييم "تصورني" – طرق التقييم المعتمدة</div>
+      <table style="width:100%; border-collapse: collapse; margin:20px 0;">
+        <tr style="background:#00967e;">
+          <th style="border:1px solid #17b09a; padding:12px; text-align:center;">الطريقة</th>
+          <th style="border:1px solid #17b09a; padding:12px; text-align:center;">النتيجة</th>
+        </tr>
+        <tr><td style="border:1px solid #17b09a; padding:12px;">بطاقة التقييم (Scorecard)</td><td style="border:1px solid #17b09a; padding:12px;">360 – 400 مليون ريال</td></tr>
+        <tr><td style="border:1px solid #17b09a; padding:12px;">بيركوس (Berkus)</td><td style="border:1px solid #17b09a; padding:12px;">4.7 مليون ريال</td></tr>
+        <tr><td style="border:1px solid #17b09a; padding:12px;">تكلفة التكرار</td><td style="border:1px solid #17b09a; padding:12px;">37 مليون ريال</td></tr>
+        <tr><td style="border:1px solid #17b09a; padding:12px;">NPV (DCF)</td><td style="border:1px solid #17b09a; padding:12px;">143 مليون ريال</td></tr>
+        <tr><td style="border:1px solid #17b09a; padding:12px;">P/E Ratio (10x)</td><td style="border:1px solid #17b09a; padding:12px;">862.6 مليون ريال</td></tr>
+      </table>
+      <div class="analysis">
+        <strong>التحليل:</strong> القيمة المعتمدة: 400 مليون ريال (Post-Money). الاستثمار: 40 مليون ريال مقابل 10%. التقييم مبني على متوسط طرق متعددة، مما يضمن دقة عالية.
+      </div>
+    </div>
+
+    <!-- الشريحة 16: التحضير للجولة الاستثمارية -->
+    <div class="section">
+      <div class="section-title">التحضير للجولة الاستثمارية (Seed Round)</div>
+      <p style="text-align: right; font-size: 1.3rem; line-height: 2;">
+        ✅ خطة عمل واضحة<br>
+        ✅ عرض تقديمي احترافي<br>
+        ✅ الجوانب القانونية مكتملة<br>
+        ✅ حجم الاستثمار: 40 مليون ريال<br>
+        ✅ التقييم: 360 مليون ريال (Pre-Money)<br>
+        ✅ آلية التفاوض: أسهم مباشرة<br>
+        ✅ ما يركز عليه المستثمرون: الفريق، السوق، Traction، IRR ≈112%
+      </p>
+      <div class="analysis">
+        <strong>التحليل:</strong> الاستعداد القانوني والفني العالي يزيد من فرص جذب المستثمرين. المرحلة الحالية مثالية للاستثمار.
+      </div>
+    </div>
+
+    <!-- الشريحة 17: الفرص الكبرى – رؤية 2030 -->
+    <div class="section">
+      <div class="section-title">الفرص الكبرى – رؤية 2030</div>
+      <p style="text-align: right; font-size: 1.3rem; line-height: 2;">
+        ✅ إكسبو 2030: 30 مليون ريال ربح إضافي<br>
+        ✅ كأس العالم 2034: 22.5 مليون ريال ربح إضافي<br>
+        ✅ التحول الرقمي: 70% من الاستوديوهات لا تمتلك تطبيقات<br>
+        ✅ السياحة: شراكات مع هيئة السياحة، نيوم، مواسم السعودية
+      </p>
+      <div class="chart-container">
+        <div id="bubbleChart"></div>
+      </div>
+      <div class="analysis">
+        <strong>التحليل:</strong> الاندماج مع إكسبو 2030 وكأس العالم 2034 يفتح آفاقًا استثمارية ضخمة، ويُعزز من القيمة السوقية.
+      </div>
+    </div>
+
+    <!-- الشريحة 18: الدعوة للانضمام -->
+    <div class="section">
+      <div class="section-title">الدعوة للانضمام</div>
+      <p style="text-align: right; font-size: 1.3rem; line-height: 2;">
+        🌱 نحن في مرحلة Seed<br>
+        • المشروع مملوك لشركة سعودية: "لحظة للتسويق الإلكتروني"<br>
+        • التطوير والصيانة التقنية: فريق من 10 مطورين في لاهور، باكستان<br>
+        • التسويق: فريق في القاهرة، مصر<br>
+        • قاعدة مستخدمين أولية قوية (+500)<br>
+        • أول عملية دفع ناجحة عبر Amazon Pay + بطاقة مدى (MADA)<br>
+        • نظام متكامل: تطبيق + ويب + دفع + محفظة + خرائط + سيرفر محلي<br>
+        • البنية التقنية متطورة وآمنة على Google Cloud (الدمام)
+      </p>
+      <p style="text-align: right; margin-top: 20px;">
+        <strong>ما نحتاجه الآن:</strong><br>
+        ✅ استثمار مبدئي: 40 مليون ريال<br>
+        ✅ شراكات تسويقية<br>
+        ✅ إرشاد استراتيجي
+      </p>
+      <p style="text-align: right; margin-top: 20px;">
+        نحن لا نبني تطبيقًا...<br>
+        نبني سوقًا رقميًا للإبداع
+      </p>
+      <div class="analysis">
+        <strong>التحليل:</strong> المرحلة الحالية مثالية للاستثمار، حيث تم تقليل المخاطر وتم إثبات الجدوى. الفرصة متاحة الآن للاستثمار المبكر.
+      </div>
+    </div>
+
+    <footer>
+      <p>0507819746 | tswrni@tswrni.com</p>
+      <p>www.tswrni.com | tswrni.sa</p>
+      <p>&copy; 2025 تصورني. جميع الحقوق محفوظة. | الرياض، المملكة العربية السعودية</p>
+      <button class="btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">العودة إلى الأعلى</button>
+    </footer>
+
+  </div>
+
+  
+
+<script>
+// 1. الهيكل التنظيمي - Bar 3D
+Plotly.newPlot('pyramidChart', [{
+  type: 'bar3d',
+  x: ['الدعم', 'التسويق', 'التطوير', 'الإدارة'],
+  y: [5, 6, 10, 3],
+  marker: { color: ['#17b09a', '#00967e', '#002727', '#17b09a'] }
+}], {
+  title: 'الهيكل التنظيمي',
+  paper_bgcolor: '#002727',
+  font: { family: 'Cairo', color: '#ffffff' }
+});
+</script>
+
+
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script>
+// 1. الهيكل التنظيمي - Bar 3D (simulated using bar chart)
+Plotly.newPlot('pyramidChart', [{
+  type: 'bar',
+  x: [5, 6, 10, 3],
+  y: ['الدعم', 'التسويق', 'التطوير', 'الإدارة'],
+  orientation: 'h',
+  marker: { color: ['#17b09a', '#00967e', '#002727', '#17b09a'] }
+}], {
+  title: 'الهيكل التنظيمي',
+  paper_bgcolor: '#002727',
+  font: { family: 'Cairo', color: '#ffffff' }
+});
+
+// 2. توزيع المستخدمين - 3D Bar (simulated)
+Plotly.newPlot('usersChart', [{
+  type: 'bar',
+  x: ['مصورين (262)', 'عملاء (243)'],
+  y: [262, 243],
+  marker: { color: ['#17b09a', '#00967e'] }
+}], {
+  title: 'توزيع المستخدمين',
+  paper_bgcolor: '#002727',
+  font: { family: 'Cairo', color: '#ffffff' }
+});
+
+// 3. الإيرادات والتدفق النقدي - Line 3D (simulated via grouped lines)
+Plotly.newPlot('financialChart', [
+  {
+    x: ['2025', '2026', '2027', '2028', '2029', '2030'],
+    y: [131.84, 137.01, 142.36, 147.88, 153.58, 159.45],
+    type: 'scatter3d',
+    mode: 'lines+markers',
+    name: 'الإيراد',
+    line: { color: '#17b09a' }
+  },
+  {
+    x: ['2025', '2026', '2027', '2028', '2029', '2030'],
+    y: [83.51, 86.26, 89.18, 92.15, 95.18, 98.37],
+    type: 'scatter3d',
+    mode: 'lines+markers',
+    name: 'التدفق النقدي',
+    line: { color: '#00967e', dash: 'dash' }
+  }
+], {
+  title: 'التحليل المالي',
+  scene: {
+    xaxis: { title: 'السنة' },
+    yaxis: { title: 'القيمة (مليون ريال)' },
+    zaxis: { visible: false }
+  },
+  paper_bgcolor: '#002727',
+  font: { family: 'Cairo', color: '#ffffff' }
+});
+
+// 4. المؤشرات المالية - Bar 3D (horizontal)
+Plotly.newPlot('metricsChart', [{
+  type: 'bar',
+  x: [1261.63, 112, 143, 11],
+  y: ['ROI', 'IRR', 'NPV', 'فترة الاسترداد'],
+  orientation: 'h',
+  marker: { color: ['#17b09a', '#00967e', '#002727', '#17b09a'] }
+}], {
+  title: 'المؤشرات المالية',
+  paper_bgcolor: '#002727',
+  font: { family: 'Cairo', color: '#ffffff' }
+});
+
+// 5. عرض الاستثمار - Pie 3D (simulated)
+Plotly.newPlot('investmentChart', [{
+  type: 'pie',
+  labels: ['10% للبيع', '90% تحتفظ بها الشركة'],
+  values: [10, 90],
+  marker: { colors: ['#17b09a', '#002727'] },
+  hole: 0.3
+}], {
+  title: 'عرض الاستثمار',
+  paper_bgcolor: '#002727',
+  font: { family: 'Cairo', color: '#ffffff' }
+});
+
+// 6. خطة التوسع - 3D Column
+Plotly.newPlot('timelineChart', [{
+  type: 'bar',
+  x: ['2025', '2026', '2027', '2028', '2029', '2030'],
+  y: [50000, 100000, 200000, 300000, 400000, 500000],
+  marker: { color: '#00967e' }
+}], {
+  title: 'خطة التوسع',
+  paper_bgcolor: '#002727',
+  font: { family: 'Cairo', color: '#ffffff' }
+});
+
+// 7. تحليل المخاطر - Scatter 3D
+Plotly.newPlot('riskChart', [{
+  type: 'scatter3d',
+  mode: 'markers',
+  x: [8, 7, 6, 5, 7],
+  y: [9, 8, 7, 6, 5],
+  z: [1, 2, 3, 4, 5],
+  marker: { size: 10, color: '#17b09a' }
+}], {
+  title: 'تحليل المخاطر',
+  scene: {
+    xaxis: { title: 'مستوى الخطر' },
+    yaxis: { title: 'فعالية الاستجابة' },
+    zaxis: { title: 'أولوية التنفيذ' }
+  },
+  paper_bgcolor: '#002727',
+  font: { family: 'Cairo', color: '#ffffff' }
+});
+
+// 8. الفرص والتهديدات - Bubble 3D
+Plotly.newPlot('bubbleChart', [
+  {
+    x: [9, 8, 7],
+    y: [8, 7, 6],
+    z: [15, 12, 10],
+    mode: 'markers',
+    type: 'scatter3d',
+    name: 'الفرص',
+    marker: { size: [15, 12, 10], color: 'rgba(23,176,154,0.6)' }
+  },
+  {
+    x: [6, 5],
+    y: [3, 4],
+    z: [10, 8],
+    mode: 'markers',
+    type: 'scatter3d',
+    name: 'التهديدات',
+    marker: { size: [10, 8], color: 'rgba(255,99,132,0.6)' }
+  }
+], {
+  title: 'الفرص والتهديدات',
+  scene: {
+    xaxis: { title: 'الأثر' },
+    yaxis: { title: 'الاحتمالية' },
+    zaxis: { title: 'الحجم' }
+  },
+  paper_bgcolor: '#002727',
+  font: { family: 'Cairo', color: '#ffffff' }
+});
+</script>
+
+</body>
+</html>
