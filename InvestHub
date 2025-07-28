@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>تسجيل الدخول - InvestHub</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="login-container">
+    <div class="logo">
+      <img src="assets/logo.png" alt="InvestHub" width="80">
+      <h1>InvestHub</h1>
+    </div>
+
+    <h2>تسجيل الدخول</h2>
+    <p>استخدم حسابك</p>
+
+    <input type="text" id="username" placeholder="اسم المستخدم" required>
+    <input type="password" id="password" placeholder="كلمة المرور" required>
+
+    <button onclick="login()">تسجيل الدخول</button>
+
+    <p class="forgot"><a href="#">نسيت كلمة المرور؟</a></p>
+
+    <div class="google-login">
+      <button onclick="googleLogin()">
+        <img src="assets/google-icon.png" alt="Google"> تسجيل الدخول بحساب Google
+      </button>
+    </div>
+
+    <p class="footer">ليس لديك حساب؟ <a href="#">اتصل بالمشرف</a></p>
+  </div>
+
+  <script src="auth.js"></script>
+</body>
+</html>
