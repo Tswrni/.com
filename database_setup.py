@@ -25,7 +25,7 @@ def setup_database():
 
     # Add a sample user
     try:
-        c.execute("INSERT INTO users (username, password) VALUES (?, ?)", ('admin', 'password'))
+        c.execute("INSERT INTO users (username, password) VALUES (?, ?)", ('TSWRNI', '1234'))
     except sqlite3.IntegrityError:
         # User already exists
         pass

@@ -17,6 +17,7 @@ def home():
 def login():
     username = request.form['username']
     password = request.form['password']
+    print(f"Attempting login with username: {username}, password: {password}")
 
     conn = get_db_connection()
     user = conn.execute('SELECT * FROM users WHERE username = ? AND password = ?', (username, password)).fetchone()
@@ -24,8 +25,10 @@ def login():
 
     if user:
         session['user_id'] = user['id']
+        print("Login successful")
         return redirect(url_for('dashboard'))
     else:
+        print("Login failed: Invalid credentials")
         return 'Invalid credentials'
 
 @app.route('/dashboard')
