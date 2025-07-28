@@ -8,13 +8,13 @@
 </head>
 <body>
     <div class="login-container">
-        <form action="#">
+        <form action="/login" method="post">
             <h1>تسجيل الدخول</h1>
             <div class="input-box">
-                <input type="text" placeholder="اسم المستخدم" required>
+                <input type="text" name="username" placeholder="اسم المستخدم" required>
             </div>
             <div class="input-box">
-                <input type="password" placeholder="كلمة المرور" required>
+                <input type="password" name="password" placeholder="كلمة المرور" required>
             </div>
             <button type="submit" class="btn">دخول</button>
         </form>
