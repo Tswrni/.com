@@ -1,0 +1,109 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Cairo', sans-serif;
+}
+
+body {
+  background: #f8f9fa;
+  color: #202124;
+}
+
+body.dark-mode {
+  background: #121212;
+  color: #e0e0e0;
+}
+
+/* صفحة الدخول */
+.login-container {
+  max-width: 400px;
+  margin: 100px auto;
+  padding: 30px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.logo h1 {
+  font-size: 24px;
+  color: #1a73e8;
+  margin-top: 10px;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background: #1a73e8;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #1765cc;
+}
+
+.google-login img {
+  width: 20px;
+  vertical-align: middle;
+}
+
+.forgot, .footer {
+  margin: 15px 0;
+}
+
+.forgot a, .footer a {
+  color: #1a73e8;
+  text-decoration: none;
+}
+
+/* لوحة التحكم */
+.dashboard {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 250px;
+  background: #f1f3f4;
+  padding: 20px;
+}
+
+.sidebar h3 {
+  margin-bottom: 20px;
+  color: #1a73e8;
+}
+
+.sidebar ul li {
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.sidebar ul li:hover {
+  background: #e8f0fe;
+}
+
+.main-content {
+  flex: 1;
+  padding: 30px;
+}
+
+/* Dark Mode */
+.dark-mode .login-container,
+.dark-mode .sidebar {
+  background: #1e1e1e;
+  color: #e0e0e0;
+}
